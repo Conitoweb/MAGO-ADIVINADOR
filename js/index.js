@@ -21,7 +21,8 @@ function responderPregunta(){
         preguntaRespondida()
     }
  }
-
+  
+ 
  function preguntaRespondida(){
       console.log("posiblemente si");
  }
