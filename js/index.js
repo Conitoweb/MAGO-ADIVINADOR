@@ -1,6 +1,8 @@
-const PREGUNTA = document.querySelector("#pregunta").value.trim()
-const RESPUESTA = document.querySelector("#respuesta")
+const  PREGUNTA = document.getElementById("ValorPregunta")
+const RESPUESTA = document.getElementById("respuesta")
 const BOTON_PREGUNTAR = document.querySelector(".btn_pregunta").addEventListener("click" , responderPregunta)
+
+
 
 const respuestasAleatorias = [
     "si",
@@ -11,18 +13,33 @@ const respuestasAleatorias = [
     "posiblemente no",
     "podria ser"
 ]
-let numeroAleatorio = Math.floor(Math.random() * respuestasAleatorias.length)
 
 function responderPregunta(){
-   
-    if(PREGUNTA.length <= 0) {
-        console.log("ingrese dato");
-    }else{
+    let valor = PREGUNTA.value
+    if (valor.trim() != '') {
         preguntaRespondida()
+        RESPUESTA.innerHTML= "viendo el futuro..."
+        
+    }else{
+        alert("debes ingresar una pregunta")
     }
- }
-  
- 
- function preguntaRespondida(){
-      console.log("posiblemente si");
+    
+    
+}
+
+
+function preguntaRespondida(){
+    let numeroAleatorio = Math.floor(Math.random() * respuestasAleatorias.length)
+    
+    setTimeout( () => {
+        RESPUESTA.innerHTML = respuestasAleatorias[numeroAleatorio]
+
+        PREGUNTA.value = ""
+        PREGUNTA.focus()
+      
+    }, 1500)
+     
+   
+
+    
  }
